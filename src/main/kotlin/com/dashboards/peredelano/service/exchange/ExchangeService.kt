@@ -47,7 +47,7 @@ class ExchangeService(
         if (currenciesWithoutUSDT.isEmpty()) {
             return mutableListOf()
         }
-        val symbols = currenciesWithoutUSDT.joinToString { "$it," }
+        val symbols = currenciesWithoutUSDT.joinToString(",")
         val uri = "https://api.exchangerate.host/latest?base=$base&symbols=$symbols&amount=$amount"
         val rates = exchangeRatioRestTemplate.getForEntity(uri, ExchageCryptoResponse::class.java)
         return rates?.body
