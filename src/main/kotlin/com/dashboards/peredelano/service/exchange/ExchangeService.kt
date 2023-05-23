@@ -36,11 +36,12 @@ class ExchangeService(
     private fun getRates(
         currenciesNameAtExchange: List<String>,
         amount: BigDecimal,
-        base: Currency
+        currency: Currency
     ): Map<String, BigDecimal>? {
         if (currenciesNameAtExchange.isEmpty()) {
             return emptyMap()
         }
+        val base = getExchangeName(currency)
         val symbols = currenciesNameAtExchange
             .toSet()
             .joinToString(",")
